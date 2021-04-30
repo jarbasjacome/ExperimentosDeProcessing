@@ -14,21 +14,18 @@ AudioInput entradaDeSom;
 
 float[] suavizado;
 
-int largura = 1280;
-int altura = 720;
-
 void setup()
 {
-//  size(512, 200);
-  fullScreen();
+  size(1920, 1080);
+  //fullScreen();
 
   minim = new Minim(this);
-  
+
   // use the getLineIn method of the Minim object to get an AudioInput
   entradaDeSom = minim.getLineIn();
-    
+
   suavizado = new float[entradaDeSom.bufferSize()];
-  
+
   entradaDeSom.disableMonitoring();
 }
 
@@ -36,7 +33,7 @@ void draw()
 {
   background(0);
   stroke(255);
-  
+
   int zarathustra=0; //peak of the mountain
   for (int i=0; i<entradaDeSom.left.size()/2; i++)
   {
@@ -45,37 +42,35 @@ void draw()
       zarathustra = i;
     }
   }
-  
+
   for (int i=zarathustra; i<entradaDeSom.left.size()-1; i++)
   {
     suavizado[i-zarathustra] = entradaDeSom.left.get(i);
   }
-  
+
   for (int i=0; i<zarathustra-1; i++)
   {
     suavizado[i + entradaDeSom.left.size()-zarathustra-1] = entradaDeSom.left.get(i);
   }
+
+  desenhaFlor(width/2, height/2);
   
+}
+
+void desenhaFlor (float posX, float posY) {
   colorMode(HSB);
-  stroke((10*mouseY)%255, 255, 255);
-  strokeWeight(20);
-  
+  stroke((mouseY)%255, 255, 255);
+  strokeWeight(5);
+
   float angle = 2* TWO_PI / (float) entradaDeSom.left.size();
   for (int i=0; i < entradaDeSom.left.size()/2-1; i++)
   {
     line (
-            largura/2 + sin(i*angle)*(mouseY + suavizado[i]*mouseX),  //ponto1x
-            altura/2 + cos(i*angle)*(mouseY + suavizado[i]*mouseX),  //ponto1y
-            
-            largura/2 + sin((i+1)*angle)*(mouseY + suavizado[i+1]*mouseX), //ponto2x
-            altura/2 + cos((i+1)*angle)*(mouseY + suavizado[i+1]*mouseX)  //ponto2y
-         );
+      posX/2 + sin(i*angle)*(mouseY + suavizado[i]*mouseX), //ponto1x
+      posY/2 + cos(i*angle)*(mouseY + suavizado[i]*mouseX), //ponto1y
 
-  }
-
-  // draw the waveforms
-  for(int i = 0; i < entradaDeSom.bufferSize()/2 - 1; i++)
-  {
-    line(i*2, 100 + suavizado[i]*50, (i+1)*2, 100 + suavizado[i+1]*50);
+      posX/2 + sin((i+1)*angle)*(mouseY + suavizado[i+1]*mouseX), //ponto2x
+      posY/2 + cos((i+1)*angle)*(mouseY + suavizado[i+1]*mouseX)  //ponto2y
+      );
   }
 }
