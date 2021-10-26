@@ -6,7 +6,9 @@
  * Mais infos:
  * https://www.academia.edu/34682509/M%C3%9ASICA_VISUAL_ALGORITMO_DE_ZARATUSTRA_E_FLOR_DE_ILHA_FORMOSA
  *
- * Versão para a oficina Musica Visual Gerativa com Julio Guatimosim, Zimaldo Melo, Violeta Padilha Garcia e Victor Valentim
+ * Versão para a oficina "Musica Visual Gerativa" SBCM 2021 com participantes Julio Guatimosim, Zimaldo Melo e Victor Valentim
+ *
+ * Oficineiras: Rute Maxsuelly, Jarbas Jácome, Violeta Garcia, Horhanna Almeida, Gustavo Tenório e Mavi Pugliese
  *
  */
 
