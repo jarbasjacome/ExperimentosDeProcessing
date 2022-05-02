@@ -94,7 +94,7 @@ void desenhaEstrelas() {
     circle(x2, y2, grossura_cont);
     
     grossura = TAM_MAX*estrelas[i].z*random(0.5,1.0);
-    stroke(255*corEstrelas[i],SATURACAO_CONT,255,OPACIDADE);
+    stroke(255*corEstrelas[i],SATURACAO,255,OPACIDADE);
     strokeWeight(grossura);
     line (estrelas[i].x, estrelas[i].y, x2, y2);
 
